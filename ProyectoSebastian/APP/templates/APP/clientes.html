@@ -1,0 +1,21 @@
+{% extends "APP/base.html" %}
+
+
+{% load static %}
+
+
+{% block main %}
+<p>PAGINA DE CLIENTES</p>
+
+<body>
+    <h1>Formulario de Cliente</h1>
+    
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Guardar Cliente</button>
+    </form>
+    
+</body>
+
+{% endblock main %}
