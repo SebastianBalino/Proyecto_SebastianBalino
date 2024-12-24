@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 
-from .forms import ProductoForm,ContactoForm
+from .forms import ProductoForm,ContactoForm, ClienteForm, ProductoSearchForm
 
-
+from .models import Producto
 
 # Create your views here.
 from django.http import HttpResponse
@@ -22,6 +22,9 @@ def productos(request):
 # Vista de Contacto
 def contacto(request):
     return render (request, "APP/contacto.html")
+
+def sobremi(request):
+    return render (request, "APP/sobremi.html")
 
 
 def agregar_producto(request):
@@ -48,3 +51,33 @@ def contacto(request):
     return render(request, 'APP/contacto.html', {'form': form})
 
 
+def registrar_cliente(request):
+    if request.method == 'POST':
+        form = ClienteForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('Clientes')  # Cambia esta URL a donde quieras redirigir después de registrar
+    else:
+        form = ClienteForm()
+    return render(request, 'APP/registrar_cliente.html', {'form': form})
+
+
+def buscar_producto(request):
+    productos = Producto.objects.all()  # Mostrar todos los productos por defecto
+
+    if request.method == 'GET':
+        form = ProductoSearchForm(request.GET)
+        if form.is_valid():
+            nombre = form.cleaned_data.get('nombre')
+            descripcion = form.cleaned_data.get('descripcion')
+
+            # Filtrar productos si se proporcionan parámetros
+            if nombre:
+                productos = productos.filter(nombre__icontains=nombre)
+            if descripcion:
+                productos = productos.filter(descripcion__icontains=descripcion)
+
+    else:
+        form = ProductoSearchForm()
+
+    return render(request, 'APP/buscar_producto.html', {'form': form, 'productos': productos})

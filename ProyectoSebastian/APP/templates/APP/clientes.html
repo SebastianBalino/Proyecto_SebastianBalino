@@ -5,16 +5,15 @@
 
 
 {% block main %}
-<p>PAGINA DE CLIENTES</p>
-
 <body>
     <h1>Formulario de Cliente</h1>
     
-    <form method="POST">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar Cliente</button>
-    </form>
+    <!-- Botón para agregar producto -->
+    <div class="text-center mt-4">
+        <a href="{% url 'registrar_cliente' %}">
+            <button class="btn btn-warning btn-lg">Registrarte</button>
+        </a>
+    </div>
     
 </body>
 
