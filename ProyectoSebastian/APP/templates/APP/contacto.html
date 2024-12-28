@@ -3,9 +3,12 @@
 {% load static %}
 
 {% block main %}
-<div class="container">
-    <h2>Contacto</h2>
+
+<div class="container" style="margin-top: 20px;">
+    <h1>Contacto</h1>
     
+    <h7>Contáctanos y te ayudaremos con todo lo que necesites</h7>
+
     <form method="POST">
         {% csrf_token %}
         {{ form.as_p }}

@@ -21,6 +21,12 @@
             </a>
         </div>
 
+        <div class="text-center mt-4">
+            <a href="{% url 'productos_lista' %}">
+                <button class="btn btn-warning btn-lg">Ver Lista de Camisetas</button>
+            </a>
+        </div>
+
         <!-- Aquí iría la lista de productos si la tienes -->
     </div>
 
@@ -36,28 +42,19 @@
         </div>
         <div class="row text-center">
             <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="my-3">Agregar producto al catalogo</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                <img src="{% static 'APP/assets/img/Milan06.jpg' %}" alt="Descripción de la imagen" class="img-fluid">
+                <h4 class="my-3">AC Milan temporada 2005/06 Local</h4>
+                <p class="text-muted">Durante esta temporada, AC Milan alcanzó la final de la Liga de Campeones de la UEFA, aunque fue derrotado por el Liverpool. Esta camiseta es un símbolo de uno de los períodos más exitosos del club en competiciones europeas.</p>
             </div>
             <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="my-3">Agregar producto al catalogo</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                <img src="{% static 'APP/assets/img/Barcelona15.jpg' %}" alt="Descripción de la imagen" class="img-fluid">
+                <h4 class="my-3">FC Barcelona temporada 2014/15 Local</h4>
+                <p class="text-muted">En esta temporada, Barcelona logró un triplete histórico, ganando La Liga, la Copa del Rey y la Liga de Campeones de la UEFA. Esta camiseta representa uno de los momentos más brillantes de Luis Enrique.</p>
             </div>
             <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="my-3">Agregar producto al catalogo</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                <img src="{% static 'APP/assets/img/ManUnited2023.jpg' %}" alt="Descripción de la imagen" class="img-fluid">
+                <h4 class="my-3">Manchester United temporada 2023/24 Local</h4>
+                <p class="text-muted">La camiseta de esta temporada es parte de un proceso de reconstrucción para Manchester United, buscando regresar a la cima del fútbol inglés y europeo tras una época de altibajos.</p>
             </div>
         </div>
     </div>
@@ -68,30 +65,25 @@
         </div>
         <div class="row text-center">
             <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="my-3">Agregar producto al catalogo</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                <img src="{% static 'APP/assets/img/Argentina2022.jpg' %}" alt="Descripción de la imagen" class="img-fluid">
+                <h4 class="my-3">Camiseta Argentina Mundial 2022 Local</h4>
+                <p class="text-muted">Camiseta  histórica, Argentina ganó la Copa del Mundo de 2022 en Catar, logrando su tercer título mundial y consolidando a Lionel Messi como uno de los mejores jugadores de la historia</p>
             </div>
             <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="my-3">Agregar producto al catalogo</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                <img src="{% static 'APP/assets/img/Arsenal2008.jpg' %}" alt="Descripción de la imagen" class="img-fluid">
+                <h4 class="my-3">Camiseta Arsenal 2008/09 Local</h4>
+                <p class="text-muted">En esta temporada, Arsenal fue subcampeón de la Copa de la Liga y llegó a las semifinales de la Liga de Campeones de la UEFA. Esta camiseta representa uno de los momentos clave de la era de Arsène Wenger</p>
             </div>
             <div class="col-md-4">
-                <span class="fa-stack fa-4x">
-                    <i class="fas fa-circle fa-stack-2x text-primary"></i>
-                    <i class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
-                </span>
-                <h4 class="my-3">Agregar producto al catalogo</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
+                <img src="{% static 'APP/assets/img/Brasil94.jpg' %}" alt="Descripción de la imagen" class="img-fluid">
+                <h4 class="my-3">Camiseta Brasil Mundial 1994/09 Local</h4>
+                <p class="text-muted">Con esta camiseta, Brasil ganó la Copa del Mundo de 1994 en los Estados Unidos, marcando el regreso del país al título mundial después de 24 años y consolidando a jugadores como Romário y Bebeto.</p>
             </div>
         </div>
+    </div>
+    <div class="text-center">
+        <h2 class="section-heading text-uppercase"></h2>
+        <h3 class="section-subheading text-muted">Mas Proximamente</h3>
     </div>
 </section>
 

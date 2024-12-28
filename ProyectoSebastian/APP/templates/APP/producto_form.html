@@ -1,0 +1,25 @@
+{% extends "APP/base.html" %}
+
+{% load static %}
+
+{% block main %}
+<body>
+    <h1>Editar Producto</h1>
+
+    <!-- Formulario para editar el producto -->
+    <div class="container mt-4">
+        <form method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}  <!-- Esto renderiza el formulario en formato de párrafo -->
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar Cambios</button>
+        </form>
+    </div>
+
+    <!-- Enlace para volver a la lista de productos -->
+    <div class="mt-4">
+        <a href="{% url 'Productos' %}" class="btn btn-secondary">Volver a la lista de productos</a>
+    </div>
+</body>
+{% endblock main %}

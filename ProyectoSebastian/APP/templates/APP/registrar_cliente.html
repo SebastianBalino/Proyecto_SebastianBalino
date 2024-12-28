@@ -1,14 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Registrar Cliente</title>
-</head>
+{% extends "APP/base.html" %}
+
+{% load static %}
+
+{% block main %}
 <body>
     <h1>Registrar Cliente</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Registrar</button>
-    </form>
+
+    <!-- Formulario de registro -->
+    <div class="container mt-4">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Registrar</button>
+        </form>
+    </div>
+
+    <!-- Botón para regresar o realizar otra acción -->
+    <div class="text-center mt-4">
+        <a href="{% url 'registrar_cliente' %}">
+            <button class="btn btn-warning btn-lg">Registrarte</button>
+        </a>
+    </div>
+
 </body>
-</html>
+{% endblock main %}

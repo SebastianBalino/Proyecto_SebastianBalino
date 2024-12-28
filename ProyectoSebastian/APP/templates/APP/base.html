@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Tienda - Sebastian</title>
+        <title>Tienda - SoloCamisetas</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -20,9 +20,9 @@
     </head>
     <body id="page-top">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-dark" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="{% static 'APP/assets/img/navbar-logo.svg' %}" alt="..." /></a>
+                <a class="navbar-brand" href="{% url 'Inicio' %}">soloCAMISETAS</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
@@ -34,16 +34,29 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'Clientes' %}">Clientes</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'Contacto' %}">Contacto</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'Sobremi' %}">Sobre Mi</a></li>
+
+
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Usuario
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                                <li><a class="dropdown-item" href="{% url 'Login' %}">Login</a></li>
+                                <li><a class="dropdown-item" href="{% url 'Register' %}">Register</a></li>
+                                <li><a class="dropdown-item" href="{% url 'Logout' %}">Logout</a></li>
+                            </ul>
+                        </li>
                     </ul>
                 </div>
             </div>
         </nav>
         <!-- Masthead-->
-        <header class="masthead" style="background-image: url('{% static "APP/assets/img/television-fondo.jpg" %}')">
+        <header class="masthead" style="background-image: url('{% static "APP/assets/img/PORT.jpg" %}')">
             <div class="container">
-                <div class="masthead-subheading">Tienda Online</div>
-                <div class="masthead-heading text-uppercase">PROYECTO</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'Productos' %}">VER PRODUCTOS</a>
+                <div class="masthead-subheading">Tienda online</div>
+                <div class="masthead-heading text-uppercase">soloCAMISETAS</div>
+                <a class="btn btn-primary btn-xl text-uppercase" href="{% url 'Productos' %}">VER CATALOGO</a>
             </div>
         </header>
 
@@ -59,15 +72,15 @@
         <footer class="footer py-4">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2023</div>
+                    <div class="col-lg-4 text-lg-start">Copyright &copy; SoloCAMISETAS 2024</div>
                     <div class="col-lg-4 my-3 my-lg-0">
                         <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                     <div class="col-lg-4 text-lg-end">
-                        <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
-                        <a class="link-dark text-decoration-none" href="#!">Terms of Use</a>
+                        <a class="link-dark text-decoration-none me-3" href="#!">Politica de Privacidad</a>
+                        <a class="link-dark text-decoration-none" href="#!">Terminos de Uso</a>
                     </div>
                 </div>
             </div>

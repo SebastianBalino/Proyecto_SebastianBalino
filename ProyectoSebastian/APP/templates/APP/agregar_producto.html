@@ -1,15 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Agregar Producto</title>
-    
-</head>
+{% extends "APP/base.html" %}
+
+{% load static %}
+
+{% block main %}
 <body>
-    <h1>Formulario para agregar un producto</h1>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Guardar</button>
-    </form>
+    <h1>Agregar Producto</h1>
+
+    <!-- Formulario para agregar un producto -->
+    <div class="container mt-4">
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.as_p }}
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Guardar</button>
+        </form>
+    </div>
+
 </body>
-</html>
+{% endblock main %}

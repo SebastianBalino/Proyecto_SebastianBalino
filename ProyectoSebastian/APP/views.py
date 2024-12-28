@@ -1,8 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect , get_object_or_404
 
 from .forms import ProductoForm,ContactoForm, ClienteForm, ProductoSearchForm
 
 from .models import Producto
+
+
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import TemplateView
 
 # Create your views here.
 from django.http import HttpResponse
@@ -11,7 +15,9 @@ from django.http import HttpResponse
 def inicio(request):
     return render (request, "APP/index.html")
 
-# Vista de Clientes
+def sobremi(request):
+    return render (request, "APP/sobremi.html")
+
 def clientes(request):
     return render (request, "APP/clientes.html")
 
@@ -23,8 +29,8 @@ def productos(request):
 def contacto(request):
     return render (request, "APP/contacto.html")
 
-def sobremi(request):
-    return render (request, "APP/sobremi.html")
+
+
 
 
 def agregar_producto(request):
@@ -81,3 +87,32 @@ def buscar_producto(request):
         form = ProductoSearchForm()
 
     return render(request, 'APP/buscar_producto.html', {'form': form, 'productos': productos})
+
+
+
+def actualizar_producto(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+
+    if request.method == 'POST':
+        form = ProductoForm(request.POST, instance=producto)
+        if form.is_valid():
+            form.save()
+            return redirect('Productos')  # Redirige a la lista de productos o donde prefieras
+    else:
+        form = ProductoForm(instance=producto)
+
+    return render(request, 'APP/producto_form.html', {'form': form})
+
+
+def eliminar_producto(request, producto_id):
+    producto = get_object_or_404(Producto, id=producto_id)
+
+    if request.method == 'POST':
+        producto.delete()  # Elimina el producto de la base de datos
+        return redirect('Productos')  # Redirige a la lista de productos después de eliminar
+    
+    return render(request, 'APP/eliminar_producto.html', {'producto': producto})
+
+def productos_lista(request):
+    productos = Producto.objects.all()  # Obtiene todos los productos de la base de datos
+    return render(request, 'APP/productos_lista.html', {'productos': productos})
