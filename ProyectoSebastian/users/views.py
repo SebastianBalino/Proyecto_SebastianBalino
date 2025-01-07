@@ -1,11 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login, authenticate
 
-from users.forms import UserRegisterForm
+from users.forms import UserRegisterForm, UserEditForm
 
 from django.contrib.auth.decorators import login_required
+
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+
+from .forms import UserEditForm, AvatarForm
+from .models import Avatar
 
 
 # Create your views here.
@@ -49,3 +55,35 @@ def register(request):
     return render(request,"users/registro.html" ,  {"form":form, "msg_register": msg_register})
 
 
+
+@login_required
+def editar_perfil(request):
+    avatar, created = Avatar.objects.get_or_create(user=request.user)  # Asegura que cada usuario tenga un avatar
+
+    if request.method == "POST":
+        form = UserEditForm(request.POST, instance=request.user)
+        password_form = PasswordChangeForm(request.user, request.POST)
+        avatar_form = AvatarForm(request.POST, request.FILES, instance=avatar)
+
+        if form.is_valid():
+            form.save()
+
+        if password_form.is_valid():
+            user = password_form.save()
+            update_session_auth_hash(request, user)
+
+        if avatar_form.is_valid():
+            avatar_form.save()
+
+        return redirect('Inicio')  # Cambia 'Inicio' según el nombre de tu vista de inicio
+
+    else:
+        form = UserEditForm(instance=request.user)
+        password_form = PasswordChangeForm(request.user)
+        avatar_form = AvatarForm(instance=avatar)
+
+    return render(request, 'users/editar_perfil.html', {
+        'form': form,
+        'password_form': password_form,
+        'avatar_form': avatar_form,
+    })

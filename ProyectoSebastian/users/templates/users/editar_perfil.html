@@ -1,0 +1,33 @@
+{% extends "APP/base.html" %}
+
+{% load static %}
+
+{% block title %} Editar Perfil {% endblock title %}
+
+{% block main %}
+<h2>Editar Perfil</h2>
+
+<form method="post" enctype="multipart/form-data"> <!-- Añadido enctype -->
+    {% csrf_token %}
+    
+    <h3>Editar Información de Usuario</h3>
+    {{ form.as_p }}
+    
+    <h3>Cambiar Contraseña</h3>
+    {{ password_form.as_p }}
+
+    <h3>Cargar Avatar</h3>
+    <div>
+        {% if avatar_form.instance.avatar %}
+            <p>Avatar actual:</p>
+            <img src="{{ avatar_form.instance.avatar.url }}" alt="Avatar" style="width: 150px; height: 150px; object-fit: cover; border-radius: 50%;">
+        {% else %}
+            <p>No tienes un avatar cargado.</p>
+        {% endif %}
+        {{ avatar_form.as_p }}
+    </div>
+    
+    <button type="submit">Guardar Cambios</button>
+</form>
+
+{% endblock main %}

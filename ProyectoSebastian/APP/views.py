@@ -8,6 +8,9 @@ from .models import Producto
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic import TemplateView
 
+from django.contrib.auth.decorators import login_required
+
+
 # Create your views here.
 from django.http import HttpResponse
 
@@ -18,33 +21,40 @@ def inicio(request):
 def sobremi(request):
     return render (request, "APP/sobremi.html")
 
+# Vista de clientes
+@login_required
 def clientes(request):
     return render (request, "APP/clientes.html")
 
 # Vista de Productos
+@login_required
 def productos(request):
     return render (request, "APP/productos.html")
 
 # Vista de Contacto
+@login_required
 def contacto(request):
     return render (request, "APP/contacto.html")
 
 
 
 
-
+@login_required
 def agregar_producto(request):
+    if not request.user.is_superuser:
+        return redirect('Productos')  # Redirige a otra página si no es superusuario
+    
     if request.method == 'POST':
         form = ProductoForm(request.POST)
         if form.is_valid():
             form.save()  # Guarda el nuevo producto en la base de datos
-            return redirect('agregar_producto')  # Cambia el redirect según tu necesidad
+            return redirect('Productos')  # Redirige a la lista de productos o donde prefieras
     else:
         form = ProductoForm()
 
     return render(request, 'APP/agregar_producto.html', {'form': form})
 
-
+@login_required
 def contacto(request):
     if request.method == 'POST':
         form = ContactoForm(request.POST)
@@ -56,18 +66,18 @@ def contacto(request):
 
     return render(request, 'APP/contacto.html', {'form': form})
 
-
+@login_required
 def registrar_cliente(request):
     if request.method == 'POST':
         form = ClienteForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('Clientes')  # Cambia esta URL a donde quieras redirigir después de registrar
+            return redirect('Clientes')  
     else:
         form = ClienteForm()
     return render(request, 'APP/registrar_cliente.html', {'form': form})
 
-
+@login_required
 def buscar_producto(request):
     productos = Producto.objects.all()  # Mostrar todos los productos por defecto
 
@@ -89,8 +99,11 @@ def buscar_producto(request):
     return render(request, 'APP/buscar_producto.html', {'form': form, 'productos': productos})
 
 
-
+@login_required
 def actualizar_producto(request, producto_id):
+    if not request.user.is_superuser:
+        return redirect('Productos')  # Redirige a otra página si no es superusuario
+    
     producto = get_object_or_404(Producto, id=producto_id)
 
     if request.method == 'POST':
@@ -103,8 +116,11 @@ def actualizar_producto(request, producto_id):
 
     return render(request, 'APP/producto_form.html', {'form': form})
 
-
+@login_required
 def eliminar_producto(request, producto_id):
+    if not request.user.is_superuser:
+        return redirect('Productos')  # Redirige a otra página si no es superusuario
+    
     producto = get_object_or_404(Producto, id=producto_id)
 
     if request.method == 'POST':
@@ -113,6 +129,7 @@ def eliminar_producto(request, producto_id):
     
     return render(request, 'APP/eliminar_producto.html', {'producto': producto})
 
+@login_required
 def productos_lista(request):
     productos = Producto.objects.all()  # Obtiene todos los productos de la base de datos
     return render(request, 'APP/productos_lista.html', {'productos': productos})

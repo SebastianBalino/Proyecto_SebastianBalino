@@ -38,13 +38,17 @@
 
 
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {% if user.avatar %}
+                                    <img src="{{ user.avatar.avatar.url }}" alt="Avatar" class="rounded-circle" style="width: 30px; height: 30px; margin-right: 10px;">
+                                {% endif %}
                                 Usuario
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                                <li><a class="dropdown-item" href="{% url 'Login' %}">Login</a></li>
-                                <li><a class="dropdown-item" href="{% url 'Register' %}">Register</a></li>
-                                <li><a class="dropdown-item" href="{% url 'Logout' %}">Logout</a></li>
+                                <li><a class="dropdown-item" href="{% url 'Login' %}">Iniciar Sesion</a></li>
+                                <li><a class="dropdown-item" href="{% url 'Register' %}">Registrarse</a></li>
+                                <li><a class="dropdown-item" href="{% url 'EditarPerfil' %}">Editar Perfil</a></li>
+                                <li><a class="dropdown-item" href="{% url 'Logout' %}">Cerrar Sesion</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -74,13 +78,13 @@
                 <div class="row align-items-center">
                     <div class="col-lg-4 text-lg-start">Copyright &copy; SoloCAMISETAS 2024</div>
                     <div class="col-lg-4 my-3 my-lg-0">
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-dark btn-social mx-2"  aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2"  aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2"  aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                     <div class="col-lg-4 text-lg-end">
-                        <a class="link-dark text-decoration-none me-3" href="#!">Politica de Privacidad</a>
-                        <a class="link-dark text-decoration-none" href="#!">Terminos de Uso</a>
+                        <a class="link-dark text-decoration-none me-3">Politica de Privacidad</a>
+                        <a class="link-dark text-decoration-none" >Terminos de Uso</a>
                     </div>
                 </div>
             </div>
